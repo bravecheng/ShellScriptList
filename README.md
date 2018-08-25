@@ -20,15 +20,15 @@ chmod 700 ./frps.sh
 
 #### 卸载
 ```Bash
-    ./frps.sh uninstall
+./frps.sh uninstall
 ```
 #### 检查更新
 ```Bash
-    ./frps.sh update
+./frps.sh update
 ```
 #### 管理
 ```Bash
-    /etc/init.d/frps {start|stop|restart|status|config|version}
+/etc/init.d/frps {start|stop|restart|status|config|version}
 ```
 
 ## kcptun
@@ -50,16 +50,16 @@ chmod +x ./kcptun.sh
 ```
 #### 卸载
 ```Bash
-    ./kcptun.sh uninstall
+./kcptun.sh uninstall
 ```
 #### 检查更新
 ```Bash
-    ./kcptun.sh update
+./kcptun.sh update
 ```
 #### 管理
 ```Bash
-	service supervisord {start|stop|restart|status}
-    supervisorctl {start|stop|restart|status} kcptun <id>
+service supervisord {start|stop|restart|status}
+supervisorctl {start|stop|restart|status} kcptun <id>
 ```
 
 ## shadowsocks
@@ -83,10 +83,10 @@ chmod +x shadowsocks-libev.sh
 ```
 #### 卸载
 ```Bash
-    ./shadowsocks-libev.sh uninstall
+./shadowsocks-libev.sh uninstall
 ```
 
 #### 管理
 ```Bash
-	/etc/init.d/shadowsocks {start|stop|restart|status}
+/etc/init.d/shadowsocks {start|stop|restart|status}
 ```
