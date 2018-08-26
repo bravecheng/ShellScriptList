@@ -264,7 +264,7 @@ fun_input_bind_port(){
     fun_check_port "bind" "${serverport}"
 }
 fun_input_dashboard_port(){
-    def_dashboard_port="6443"
+    def_dashboard_port="5000"
     echo ""
     echo -n -e "Please input ${program_name} ${COLOR_GREEN}dashboard_port${COLOR_END} [1-65535]"
     read -p "(Default dashboard_port: ${def_dashboard_port}):" input_dashboard_port
