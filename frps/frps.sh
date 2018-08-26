@@ -180,7 +180,7 @@ fun_get_version(){
     fi
 }
 fun_getServer(){
-    program_download_url = ${github_download_url}
+    program_download_url=${github_download_url}
 }
 fun_getVer(){
     echo -e "Loading network version for ${program_name}, please wait..."
