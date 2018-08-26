@@ -14,7 +14,7 @@
 
 ```Bash
 wget --no-check-certificate https://raw.githubusercontent.com/bravecheng/ShellScriptList/master/frps/frps.sh -O ./frps.sh
-chmod 700 ./frps.sh
+chmod +x ./frps.sh
 ./frps.sh install
 ```
 
