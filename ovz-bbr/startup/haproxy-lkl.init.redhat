@@ -1,0 +1,85 @@
+#!/bin/sh
+#
+# haproxy-lkl
+#
+# chkconfig: - 85 15
+# description: HA-Proxy is a TCP/HTTP reverse proxy which is particularly suited \
+#              for high availability environments.
+# processname: haproxy-lkl
+# config: /usr/local/haproxy-lkl/etc/haproxy.cfg
+# pidfile: /var/run/haproxy-lkl.pid
+
+# Source function library.
+if [ -f /etc/init.d/functions ]; then
+  . /etc/init.d/functions
+elif [ -f /etc/rc.d/init.d/functions ] ; then
+  . /etc/rc.d/init.d/functions
+else
+  exit 0
+fi
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ ${NETWORKING} = "no" ] && exit 0
+
+BASENAME=haproxy-lkl
+HAPROXY_LKL_DIR=/usr/local/$BASENAME
+HAPROXY=${HAPROXY_LKL_DIR}/sbin/haproxy
+HAPROXY_LKL=${HAPROXY_LKL_DIR}/sbin/$BASENAME
+
+PIDFILE=/var/run/${BASENAME}.pid
+
+RETVAL=0
+
+do_start() {
+	if ( get_status >/dev/null 2>&1 ); then
+		echo "$BASENAME is already running."
+		RETVAL=1
+	else
+		echo -n "Starting $BASENAME: "
+		daemon --pidfile=$PIDFILE $HAPROXY_LKL -p "$PIDFILE"
+		RETVAL=$?
+		echo
+	fi
+}
+
+do_stop() {
+	# clear iptables rules
+	$HAPROXY_LKL -c >/dev/null 2>&1
+
+	echo -n "Shutting down $BASENAME: "
+	killproc -p $PIDFILE $HAPROXY
+	RETVAL=$?
+	echo
+	[ $RETVAL -eq 0 ] && rm -f $PIDFILE
+}
+
+get_status() {
+	status -p $PIDFILE $HAPROXY
+	RETVAL=$?
+	return $RETVAL
+}
+
+# See how we were called.
+case "$1" in
+	start)
+		do_start
+		;;
+	stop)
+		do_stop
+		;;
+	restart)
+		do_stop
+		do_start
+		;;
+	status)
+		get_status
+		;;
+	*)
+		echo $"Usage: /etc/init.d/$BASENAME {start|stop|restart|status}"
+		RETVAL=255
+esac
+
+exit $RETVAL
