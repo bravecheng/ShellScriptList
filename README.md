@@ -103,3 +103,32 @@ chmod +x shadowsocks-libev.sh
 ```Bash
 /etc/init.d/shadowsocks {start|stop|restart|status}
 ```
+
+## OpenVZ-BBR
+
+原脚本出处[kuoruan/shell-scripts](https://github.com/kuoruan/shell-scripts)。
+
+### Server
+
+安装平台：CentOS、Debian、Ubuntu。
+
+目前脚本安装的版本是**最新版本**
+
+#### 安装
+
+```Bash
+wget --no-check-certificate https://raw.githubusercontent.com/bravecheng/ShellScriptList/master/ovz-bbr/ovz-bbr-installer.sh -O ./ovz-bbr-installer.sh
+chmod +x ./ovz-bbr-installer.sh
+./ovz-bbr-installer.sh
+```
+
+#### 卸载
+```Bash
+./ovz-bbr-installer.sh uninstall
+```
+
+#### 管理
+```Bash
+systemctl {start|stop|restart} haproxy-lkl
+```
+
