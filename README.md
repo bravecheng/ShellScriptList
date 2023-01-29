@@ -90,6 +90,9 @@ Debian/Ubuntu: shadowsocks-libev-debian.sh
 #### 安装(以debian为例)
 
 ```Bash
+wget --no-check-certificate  https://raw.githubusercontent.com/bravecheng/ShellScriptList/master/shadowsocks/libsodium-1.0.16.tar.gz
+wget --no-check-certificate  https://raw.githubusercontent.com/bravecheng/ShellScriptList/master/shadowsocks/shadowsocks-libev-3.3.5.tar.gz
+wget --no-check-certificate  https://raw.githubusercontent.com/bravecheng/ShellScriptList/master/shadowsocks/mbedtls-2.12.0-gpl.tgz
 wget --no-check-certificate -O shadowsocks-libev.sh https://raw.githubusercontent.com/bravecheng/ShellScriptList/master/shadowsocks/shadowsocks-libev-debian.sh
 chmod +x shadowsocks-libev.sh
 ./shadowsocks-libev.sh 2>&1 | tee shadowsocks-libev.log
