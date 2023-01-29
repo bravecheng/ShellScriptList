@@ -57,6 +57,9 @@ chmod +x ./frps.sh
 #### 安装
 
 ```Bash
+apt remove python-setuptools
+apt install python-pip
+pip install setuptools==38.6.0
 wget --no-check-certificate https://raw.githubusercontent.com/bravecheng/ShellScriptList/master/kcptun/kcptun.sh -O ./kcptun.sh
 chmod +x ./kcptun.sh
 ./kcptun.sh install
